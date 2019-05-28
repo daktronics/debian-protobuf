@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Laszlo Boszormenyi (GCS) <gcs@debian.org>
 Build-Depends:
 # Debian build system
- , debhelper (>= 11)
+ , debhelper (>= 9)
 # C/C++
  , zlib1g-dev
  , libgmock-dev
