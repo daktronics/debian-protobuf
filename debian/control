@@ -5,6 +5,7 @@ Maintainer: Laszlo Boszormenyi (GCS) <gcs@debian.org>
 Build-Depends:
 # Debian build system
  , debhelper (>= 9)
+ , dh-autoreconf
 # C/C++
  , zlib1g-dev
  , libgmock-dev
