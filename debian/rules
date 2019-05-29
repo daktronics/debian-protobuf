@@ -15,7 +15,7 @@ export DEB_LDFLAGS_MAINT_APPEND  = -latomic
 endif
 
 %:
-	dh $@ --with autoreconf,python2,python3
+	dh $@ --with autoreconf,python2,python3 --parallel
 
 ifneq ($(DEB_BUILD_ARCH),$(DEB_HOST_ARCH))
 override_dh_auto_configure:
