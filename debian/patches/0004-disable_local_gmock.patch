@@ -1,14 +1,17 @@
-Description: use packaged Google Test and Google Mock libraries
- Link tests with the already compiled libraries.
-Forwarded: not-needed
-Author: Laszlo Boszormenyi (GCS) <gcs@debian.org>
-Last-Update: 2018-05-29
+From: "Laszlo Boszormenyi (GCS)" <gcs@debian.org>
+Date: Wed, 29 May 2019 08:48:06 -0500
+Subject: disable_local_gmock
 
 ---
+ Makefile.am     |  6 +++---
+ src/Makefile.am | 21 ++++++---------------
+ 2 files changed, 9 insertions(+), 18 deletions(-)
 
+diff --git a/Makefile.am b/Makefile.am
+index 8334db6..f26e34f 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -17,9 +17,9 @@ DIST_SUBDIRS = src conformance benchmark
+@@ -17,9 +17,9 @@ DIST_SUBDIRS = src conformance benchmarks third_party/googletest
  # want "make install" to recurse into gmock since we don't want to overwrite
  # the installed version of gmock if there is one.
  check-local:
@@ -21,9 +24,11 @@ Last-Update: 2018-05-29
  
  # We would like to clean gmock when "make clean" is invoked.  But we have to
  # be careful because clean-local is also invoked during "make distclean", but
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 4bb7745..7508e53 100644
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
-@@ -718,10 +718,8 @@ GOOGLEMOCK_SRC_DIR=$(srcdir)/../third_pa
+@@ -699,10 +699,8 @@ GOOGLEMOCK_SRC_DIR=$(srcdir)/../third_party/googletest/googlemock
  check_PROGRAMS = protoc protobuf-test protobuf-lazy-descriptor-test \
                   protobuf-lite-test test_plugin protobuf-lite-arena-test \
                   no-warning-test $(GZCHECKPROGRAMS)
@@ -36,7 +41,7 @@ Last-Update: 2018-05-29
  protobuf_test_CPPFLAGS = -I$(GOOGLETEST_SRC_DIR)/include \
                           -I$(GOOGLEMOCK_SRC_DIR)/include
  # Disable optimization for tests unless the user explicitly asked for it,
-@@ -810,10 +808,7 @@ $(am_protobuf_test_OBJECTS): unittest_pr
+@@ -791,10 +789,7 @@ $(am_protobuf_test_OBJECTS): unittest_proto_middleman
  
  # Run cpp_unittest again with PROTOBUF_TEST_NO_DESCRIPTORS defined.
  protobuf_lazy_descriptor_test_LDADD = $(PTHREAD_LIBS) libprotobuf.la \
@@ -48,7 +53,7 @@ Last-Update: 2018-05-29
  protobuf_lazy_descriptor_test_CPPFLAGS = -I$(GOOGLEMOCK_SRC_DIR)/include \
                                           -I$(GOOGLETEST_SRC_DIR)/include \
                                           -DPROTOBUF_TEST_NO_DESCRIPTORS
-@@ -837,9 +832,7 @@ COMMON_LITE_TEST_SOURCES =
+@@ -818,9 +813,7 @@ COMMON_LITE_TEST_SOURCES =                                             \
  # full runtime and we want to make sure this test builds without full
  # runtime.
  protobuf_lite_test_LDADD = $(PTHREAD_LIBS) libprotobuf-lite.la     \
@@ -59,7 +64,7 @@ Last-Update: 2018-05-29
  protobuf_lite_test_CPPFLAGS= -I$(GOOGLEMOCK_SRC_DIR)/include \
                               -I$(GOOGLETEST_SRC_DIR)/include
  protobuf_lite_test_CXXFLAGS = $(NO_OPT_CXXFLAGS)
-@@ -853,9 +846,7 @@ $(am_protobuf_lite_test_OBJECTS): unitte
+@@ -834,9 +827,7 @@ $(am_protobuf_lite_test_OBJECTS): unittest_proto_middleman
  # gtest when building the test internally our memory sanitizer doesn't detect
  # memory leaks (don't know why).
  protobuf_lite_arena_test_LDADD = $(PTHREAD_LIBS) libprotobuf-lite.la \
@@ -70,7 +75,7 @@ Last-Update: 2018-05-29
  protobuf_lite_arena_test_CPPFLAGS = -I$(GOOGLEMOCK_SRC_DIR)/include  \
                                      -I$(GOOGLETEST_SRC_DIR)/include
  protobuf_lite_arena_test_CXXFLAGS = $(NO_OPT_CXXFLAGS)
-@@ -867,7 +858,7 @@ $(am_protobuf_lite_arena_test_OBJECTS):
+@@ -848,7 +839,7 @@ $(am_protobuf_lite_arena_test_OBJECTS): unittest_proto_middleman
  
  # Test plugin binary.
  test_plugin_LDADD = $(PTHREAD_LIBS) libprotobuf.la libprotoc.la \

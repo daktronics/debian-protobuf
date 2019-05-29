@@ -1,14 +1,16 @@
-Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=835302
-Bug-Upstream: https://github.com/google/protobuf/issues/2002
-Origin: https://github.com/ibmruntimes/v8z
-Author: Sebastiaan Couwenberg <sebastic@xs4all.nl>
-Description: Add support for s390x architecture.
- Based on port of Google V8 JavaScript engine to z Systems
+From: "Laszlo Boszormenyi (GCS)" <gcs@debian.org>
+Date: Wed, 29 May 2019 08:48:06 -0500
+Subject: s390x
 
+---
+ src/google/protobuf/stubs/platform_macros.h | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/google/protobuf/stubs/platform_macros.h b/src/google/protobuf/stubs/platform_macros.h
+index c3a64dd..0aa4b9f 100644
 --- a/src/google/protobuf/stubs/platform_macros.h
 +++ b/src/google/protobuf/stubs/platform_macros.h
-@@ -78,8 +78,15 @@
- #define GOOGLE_PROTOBUF_ARCH_64_BIT 1
+@@ -79,6 +79,13 @@
  #elif defined(__PPC__)
  #define GOOGLE_PROTOBUF_ARCH_PPC 1
  #define GOOGLE_PROTOBUF_ARCH_32_BIT 1
@@ -22,4 +24,3 @@ Description: Add support for s390x architecture.
  #elif defined(__GNUC__)
  # if (((__GNUC__ == 4) && (__GNUC_MINOR__ >= 7)) || (__GNUC__ > 4))
  // We fallback to the generic Clang/GCC >= 4.7 implementation in atomicops.h
- # elif defined(__clang__)

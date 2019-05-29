@@ -1,0 +1,30 @@
+From: "Laszlo Boszormenyi (GCS)" <gcs@debian.org>
+Date: Wed, 29 May 2019 08:48:06 -0500
+Subject: default_python_version
+
+===================================================================
+---
+ python/mox.py     | 2 +-
+ python/stubout.py | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/python/mox.py b/python/mox.py
+index 43db021..bb369b3 100755
+--- a/python/mox.py
++++ b/python/mox.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python2.4
++#!/usr/bin/python
+ #
+ # Copyright 2008 Google Inc.
+ #
+diff --git a/python/stubout.py b/python/stubout.py
+index aee4f2d..d7a6db7 100755
+--- a/python/stubout.py
++++ b/python/stubout.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python2.4
++#!/usr/bin/python
+ #
+ # Copyright 2008 Google Inc.
+ #

@@ -1,0 +1,21 @@
+From: Matt Sickler <Matt.Sickler@daktronics.com>
+Date: Wed, 29 May 2019 08:48:30 -0500
+Subject: Remove googletest from DIST_SUBDIRS
+
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index f26e34f..a7b1b4e 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -9,7 +9,7 @@ AUTOMAKE_OPTIONS = foreign
+ SUBDIRS = . src
+ 
+ # Always include third_party directories in distributions.
+-DIST_SUBDIRS = src conformance benchmarks third_party/googletest
++DIST_SUBDIRS = src conformance benchmarks
+ 
+ # Build gmock before we build protobuf tests.  We don't add gmock to SUBDIRS
+ # because then "make check" would also build and run all of gmock's own tests,
