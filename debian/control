@@ -10,16 +10,6 @@ Build-Depends:
  , zlib1g-dev
  , libgmock-dev
  , libgtest-dev
-# Python
- , dh-python
- , python-all:any
- , libpython-all-dev
- , python3-all:any
- , libpython3-all-dev
- , python-setuptools
- , python-six
- , python3-setuptools
- , python3-six
 # Manpage generator
  , xmlto
 # Tests
@@ -36,7 +26,6 @@ Standards-Version: 4.2.1
 Homepage: https://github.com/google/protobuf/
 #Vcs-Browser: https://anonscm.debian.org/cgit/pkg-protobuf/pkg-protobuf.git
 #Vcs-Git: https://anonscm.debian.org/git/pkg-protobuf/pkg-protobuf.git
-#X-Python-Version: >= 2.7
 XS-Ruby-Versions: all
 
 Package: ruby-google-protobuf
@@ -186,52 +175,6 @@ Description: compiler for protocol buffer definition files
  This package contains the protocol buffer compiler that is used for
  translating from .proto files (containing the definitions) to the language
  binding for the supported languages.
-
-Package: python-protobuf
-Architecture: linux-any
-Section: python
-Depends: ${shlibs:Depends}, ${python:Depends}, ${misc:Depends}
-Provides: ${python:Provides}
-XB-Python-Version: ${python:Versions}
-Description: Python bindings for protocol buffers
- Protocol buffers are a flexible, efficient, automated mechanism for
- serializing structured data - similar to XML, but smaller, faster, and
- simpler. You define how you want your data to be structured once, then you can
- use special generated source code to easily write and read your structured
- data to and from a variety of data streams and using a variety of languages.
- You can even update your data structure without breaking deployed programs
- that are compiled against the "old" format.
- .
- Google uses Protocol Buffers for almost all of its internal RPC protocols and
- file formats.
- .
- This package contains the Python bindings for the protocol buffers. You will
- need the protoc tool (in the protobuf-compiler package) to compile your
- definition to Python classes, and then the modules in this package will allow
- you to use those classes in your programs.
-
-Package: python3-protobuf
-Architecture: linux-any
-Section: python
-Depends: ${shlibs:Depends}, ${python3:Depends}, ${misc:Depends}
-Provides: ${python3:Provides}
-XB-Python-Version: ${python3:Versions}
-Description: Python 3 bindings for protocol buffers
- Protocol buffers are a flexible, efficient, automated mechanism for
- serializing structured data - similar to XML, but smaller, faster, and
- simpler. You define how you want your data to be structured once, then you can
- use special generated source code to easily write and read your structured
- data to and from a variety of data streams and using a variety of languages.
- You can even update your data structure without breaking deployed programs
- that are compiled against the "old" format.
- .
- Google uses Protocol Buffers for almost all of its internal RPC protocols and
- file formats.
- .
- This package contains the Python 3 bindings for the protocol buffers. You will
- need the protoc tool (in the protobuf-compiler package) to compile your
- definition to Python classes, and then the modules in this package will allow
- you to use those classes in your programs.
 
 Package: libprotobuf-java
 Architecture: all
